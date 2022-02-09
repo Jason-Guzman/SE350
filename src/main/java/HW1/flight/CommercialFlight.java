@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Flight {
+public class CommercialFlight {
 
     private Airline airline;
     private Airport origin;
@@ -16,7 +16,7 @@ public class Flight {
     private UUID flightNumber;
     private Date departureTime;
 
-    public Flight(Airline airline, Airport origin, Airport destination) throws NullParameterException {
+    public CommercialFlight(Airline airline, Airport origin, Airport destination) throws NullParameterException {
         setAirline(airline);
         setOrigin(origin);
         setDestination(destination);
@@ -77,7 +77,7 @@ public class Flight {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Flight flight = (Flight) o;
+        CommercialFlight flight = (CommercialFlight) o;
         return Objects.equals(airline, flight.airline) &&
                 Objects.equals(origin, flight.origin) &&
                 Objects.equals(destination, flight.destination) &&
