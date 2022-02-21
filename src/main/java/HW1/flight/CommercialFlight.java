@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
-public class CommercialFlight {
+public class CommercialFlight implements Flight {
 
     private Airline airline;
     private Airport origin;
@@ -77,12 +77,12 @@ public class CommercialFlight {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CommercialFlight flight = (CommercialFlight) o;
-        return Objects.equals(airline, flight.airline) &&
-                Objects.equals(origin, flight.origin) &&
-                Objects.equals(destination, flight.destination) &&
-                Objects.equals(flightNumber, flight.flightNumber) &&
-                Objects.equals(departureTime, flight.departureTime);
+        CommercialFlight commercialFlight = (CommercialFlight) o;
+        return Objects.equals(airline, commercialFlight.airline) &&
+                Objects.equals(origin, commercialFlight.origin) &&
+                Objects.equals(destination, commercialFlight.destination) &&
+                Objects.equals(flightNumber, commercialFlight.flightNumber) &&
+                Objects.equals(departureTime, commercialFlight.departureTime);
     }
 
     @Override

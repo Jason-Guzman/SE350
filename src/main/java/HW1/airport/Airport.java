@@ -1,7 +1,8 @@
 package HW1.airport;
-import java.util.Objects;
 import HW1.exception.BadParameterException;
 import HW1.exception.NullParameterException;
+
+import java.util.Objects;
 
 public class Airport {
 
