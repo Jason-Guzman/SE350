@@ -8,6 +8,16 @@ public class Airline {
 
     private String name;
 
+    private static Map<Color, Vehicle>
+            AirlineCache = new HashMap<>();
+
+    public static Airline createVehicle(String name) {
+        Airline newAirline = AirlineCache.computeIfAbsent(name -> {
+            return new Car(newEngine, newColor);
+        });
+        return newAirline;
+    }
+
     public Airline(String name) throws NullParameterException, BadParameterException {
         setName(name);
     }

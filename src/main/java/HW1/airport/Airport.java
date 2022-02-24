@@ -8,6 +8,16 @@ public class Airport {
 
     private String name;
 
+    private static Map<name>
+            AirportCache = new HashMap<>();
+
+    public static Airport CreateAirport(String name) {
+        Airport newAirport = AirportCache.computeIfAbsent(name -> {
+            return new Airport SetName(name);
+        });
+        return newAirport;
+    }
+
     public Airport(String name) throws NullParameterException, BadParameterException {
         setName(name);
     }
@@ -27,6 +37,7 @@ public class Airport {
 
         this.name = name;
     }
+
 
     @Override
     public boolean equals(Object o) {

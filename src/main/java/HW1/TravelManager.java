@@ -5,7 +5,21 @@ import HW1.exception.BadParameterException;
 import HW1.exception.NullParameterException;
 import HW1.flight.CommercialFlight;
 import HW1.flight.Flight;
+import HW1.flight.FlightFactory;
+
 import java.util.Optional;
+
+public class TravelManager {
+
+    public static void main(String[] args) throws Exception {
+       Flight flight1 = FlightFactory.getAirline("ORD");
+       Flight flight2 = FlightFactory.getAirline("Spirit");
+    }
+
+}
+
+/*
+OLD PATTERN
 
 public class TravelManager {
 
@@ -27,3 +41,4 @@ public class TravelManager {
     }
 
 }
+ */
