@@ -1,44 +1,27 @@
 package HW1;
 import HW1.airline.Airline;
+import HW1.airline.AirlineFactory;
 import HW1.airport.Airport;
-import HW1.exception.BadParameterException;
-import HW1.exception.NullParameterException;
-import HW1.flight.CommercialFlight;
+import HW1.airport.AirportFactory;
 import HW1.flight.Flight;
-import HW1.flight.FlightFactory;
-
 import java.util.Optional;
 
-public class TravelManager {
+public interface TravelManager {
 
     public static void main(String[] args) throws Exception {
-       Flight flight1 = FlightFactory.getAirline("ORD");
-       Flight flight2 = FlightFactory.getAirline("Spirit");
+
+        Airline airline = AirlineFactory.getAirline("Spirit");
+        Airport origin = AirportFactory.getAirport("ORD");
+        Airport destination = AirportFactory.getAirport("DFW");
+
+
+        String flightNumber = ProxyFlightManager.flight_creation("commercialFlight", airline, origin, destination, 0);
+        String flightNumber2 = ProxyFlightManager.flight_creation("passengerFlight", airline, origin, destination, 88);
+
+        ProxyFlightManager.flight_num_proxy(flightNumber);
+        Optional<Flight> flight2 = FlightManager.getInstance().getFlightByFlightNumber(flightNumber2);
+
+        System.out.println(flight2.get());
+
     }
-
 }
-
-/*
-OLD PATTERN
-
-public class TravelManager {
-
-    public static void main(String[] args) throws Exception {
-        try {
-            Airline airline = new Airline("Spirit");
-            Airport origin = new Airport("ORD");
-            Airport destination = new Airport("DFW");
-
-            String flightNumber = FlightManager.getInstance().createFlight("commercialFlight", airline, origin, destination);
-            Optional<Flight> flight = FlightManager.getInstance().getFlightByFlightNumber(flightNumber);
-
-            System.out.println(flight.get());
-        } catch (NullParameterException ex) {
-            ex.printStackTrace();
-        } catch (BadParameterException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-}
- */
